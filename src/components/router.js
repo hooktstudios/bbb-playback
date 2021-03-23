@@ -9,7 +9,7 @@ const Router = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route
-          path="/:recordId"
+          path="/:recordId+"
           component={Loader}
         />
         <Route render={(props) => <Error {...props} code={error['NOT_FOUND']} />} />

@@ -226,13 +226,15 @@ const getLayout = location => {
 const getRecordId = match => {
   if (!ROUTER) return 'local';
 
+  // debugger;
   if (match) {
     const { params } = match;
     if (params && params.recordId) {
       const { recordId } = params;
-      const regex = /^[a-z0-9]{40}-[0-9]{13}$/;
+      return recordId;
+      // const regex = /^[a-z0-9]{40}-[0-9]{13}$/;
 
-      if (recordId.match(regex)) return recordId;
+      // if (recordId.match(regex)) return recordId;
     }
   }
 
