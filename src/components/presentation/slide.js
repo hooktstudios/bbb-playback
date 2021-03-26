@@ -15,7 +15,10 @@ export default class Slide extends PureComponent {
   }
 
   getProxy(id, height, width) {
-    const { thumbnails } = this.props;
+    const {
+      mediaPath,
+      thumbnails,
+    } = this.props;
 
     const thumbnail = thumbnails.find(thumbnails => id === thumbnails.id);
     if (!thumbnail) return null;
@@ -39,7 +42,7 @@ export default class Slide extends PureComponent {
         <img
           alt={alt}
           className={cx('proxy', { logo })}
-          src={buildFileURL(this.recordId, src)}
+          src={buildFileURL(this.recordId, src, mediaPath)}
         />
       </foreignObject>
     );
@@ -49,6 +52,7 @@ export default class Slide extends PureComponent {
     const {
       id,
       slides,
+      mediaPath,
     } = this.props;
 
     const current = slides.find(slide => id === slide.id);
@@ -65,7 +69,7 @@ export default class Slide extends PureComponent {
         {this.getProxy(id, height, width)}
         <image
           height={height}
-          href={buildFileURL(this.recordId, src)}
+          href={buildFileURL(this.recordId, src, mediaPath)}
           x={0}
           width={width}
           y={0}

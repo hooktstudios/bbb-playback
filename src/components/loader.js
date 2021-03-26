@@ -39,6 +39,7 @@ class Loader extends PureComponent {
     this.data = {};
     this.layout = getLayout(location);
     this.recordId = getRecordId(match);
+    this.mediaPath = match.params.mediaPath;
     this.time = getTime(location);
 
     this.state = {
@@ -60,7 +61,7 @@ class Loader extends PureComponent {
   }
 
   fetchFile(recordId, file) {
-    const url = buildFileURL(recordId, file);
+    const url = buildFileURL(recordId, file, this.mediaPath);
     fetch(url).then(response => {
       if (response.ok) {
         logger.debug(ID.LOADER, file, response);
@@ -93,7 +94,7 @@ class Loader extends PureComponent {
 
   fetchMedia() {
     const fetches = config.medias.map(type => {
-      const url = buildFileURL(this.recordId, `video/webcams.${type}`);
+      const url = buildFileURL(this.recordId, `video/webcams.${type}`, this.mediaPath);
       return fetch(url, { method: 'HEAD' });
     });
 
@@ -149,6 +150,7 @@ class Loader extends PureComponent {
           intl={intl}
           layout={this.layout}
           time={this.time}
+          mediaPath={this.mediaPath}
         />
       );
     }

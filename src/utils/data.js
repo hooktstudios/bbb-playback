@@ -48,10 +48,17 @@ const ROUTER = getRouter();
 
 const MEDIA_ROOT_URL = process.env.REACT_APP_MEDIA_ROOT_URL;
 
-const buildFileURL = (recordId, file) => {
+const buildFileURL = (recordId, file, mediaPath) => {
   if (!ROUTER) return file;
 
-  return `${MEDIA_ROOT_URL ? MEDIA_ROOT_URL : '/presentation'}/${recordId}/${file}`;
+  const rootUrl = MEDIA_ROOT_URL ? MEDIA_ROOT_URL : '/presentation';
+  let fileUrl = `${recordId}/${file}`;
+
+  if(mediaPath) {
+    fileUrl = `${mediaPath}/${fileUrl}`;
+  }
+
+  return `${rootUrl}/${fileUrl}`;
 };
 
 const getAvatarStyle = name => {

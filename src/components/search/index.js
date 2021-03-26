@@ -69,6 +69,7 @@ export default class Search extends PureComponent {
   renderBody() {
     const {
       intl,
+      mediaPath,
       metadata,
       thumbnails,
     } = this.props;
@@ -93,6 +94,7 @@ export default class Search extends PureComponent {
             player={null}
             search={search}
             thumbnails={thumbnails}
+            mediaPath={mediaPath}
           />
         </div>
       </div>

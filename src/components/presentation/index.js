@@ -93,6 +93,7 @@ export default class Presentation extends PureComponent {
       draws,
       drawsInterval,
       intl,
+      mediaPath,
       metadata,
       slides,
       thumbnails,
@@ -128,6 +129,7 @@ export default class Presentation extends PureComponent {
             <g clipPath="url(#viewBox)">
               <Slide
                 id={slideId}
+                mediaPath={mediaPath}
                 metadata={metadata}
                 slides={slides}
                 thumbnails={thumbnails}
@@ -136,6 +138,7 @@ export default class Presentation extends PureComponent {
                 draws={draws}
                 drawsInterval={drawsInterval}
                 id={canvasId}
+                mediaPath={mediaPath}
                 metadata={metadata}
               />
               <Cursor

@@ -106,6 +106,8 @@ export default class Thumbnails extends Component {
   }
 
   renderImage(item) {
+    const { mediaPath } = this.props;
+
     const {
       alt,
       src,
@@ -127,7 +129,7 @@ export default class Thumbnails extends Component {
       <img
         alt={alt}
         className={cx('thumbnail-image', { logo })}
-        src={buildFileURL(this.recordId, src)}
+        src={buildFileURL(this.recordId, src, mediaPath)}
       />
     );
   }

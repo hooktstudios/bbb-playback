@@ -22,15 +22,16 @@ export default class Video extends PureComponent {
     const {
       captions,
       media,
+      mediaPath,
       metadata,
     } = props;
 
     const sources = [
       {
-        src: buildFileURL(metadata.id, 'video/webcams.mp4'),
+        src: buildFileURL(metadata.id, 'video/webcams.mp4', mediaPath),
         type: 'video/mp4',
       }, {
-        src: buildFileURL(metadata.id, 'video/webcams.webm'),
+        src: buildFileURL(metadata.id, 'video/webcams.webm', mediaPath),
         type: 'video/webm',
       },
     ].filter(src => {

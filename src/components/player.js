@@ -236,7 +236,10 @@ export default class Player extends PureComponent {
 
     if (!open) return null;
 
-    const { intl } = this.props;
+    const {
+      intl,
+      mediaPath,
+    } = this.props;
     const content = this.layout.getContent();
 
     switch (modal) {
@@ -257,6 +260,7 @@ export default class Player extends PureComponent {
             metadata={this.metadata}
             thumbnails={this.thumbnails}
             toggleModal={() => this.toggleModal(ID.SEARCH)}
+            mediaPath={mediaPath}
           />
         );
       default:
@@ -265,7 +269,10 @@ export default class Player extends PureComponent {
   }
 
   renderThumbnails() {
-    const { intl } = this.props;
+    const {
+      intl,
+      mediaPath,
+    } = this.props;
 
     const {
       search,
@@ -286,6 +293,7 @@ export default class Player extends PureComponent {
         player={video}
         search={search}
         thumbnails={this.thumbnails}
+        mediaPath={mediaPath}
       />
     );
   }
@@ -323,6 +331,7 @@ export default class Player extends PureComponent {
 
   renderMedia() {
     const {
+      mediaPath,
       data,
       intl,
       time,
@@ -341,6 +350,7 @@ export default class Player extends PureComponent {
           onPlayerReady={this.handlePlayerReady}
           onTimeUpdate={this.handleTimeUpdate}
           time={time}
+          mediaPath={mediaPath}
         />
       </div>
     );
@@ -413,7 +423,7 @@ export default class Player extends PureComponent {
   }
 
   renderPresentation(active) {
-    const { intl } = this.props;
+    const { mediaPath, intl } = this.props;
     const { time } = this.state;
 
     const currentSlideIndex = getCurrentDataIndex(this.slides, time);
@@ -436,6 +446,7 @@ export default class Player extends PureComponent {
         panzooms={this.panzooms}
         slides={this.slides}
         thumbnails={this.thumbnails}
+        mediaPath={mediaPath}
       />
     )
   }

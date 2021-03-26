@@ -68,6 +68,7 @@ export default class Canvas extends PureComponent {
   }
 
   renderPoll(style, data) {
+    const { mediaPath } = this.props;
     const {
       image,
       rect,
@@ -92,7 +93,7 @@ export default class Canvas extends PureComponent {
             transform={image.transform}
             width={image.width}
             x={image.x}
-            href={buildFileURL(this.recordId, image['xlink:href'])}
+            href={buildFileURL(this.recordId, image['xlink:href'], mediaPath)}
             y={image.y}
           />
         </g>
@@ -104,7 +105,7 @@ export default class Canvas extends PureComponent {
             height={image.height}
             width={image.width}
             x={image.x}
-            href={buildFileURL(this.recordId, image['xlink:href'])}
+            href={buildFileURL(this.recordId, image['xlink:href'], mediaPath)}
             y={image.y}
           />
         </g>
